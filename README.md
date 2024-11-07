@@ -14,7 +14,8 @@ This script was last tested on *Debian 12 x86_64*.
 The default wallpaper is created by me and Licensed under Creative Commons.
 
 Steps below are records for personal usage only, it's **NOT A GUIDE** by any means.
-[preview](./2023-12-20_09-45-rice.png)
+
+![preview](./2023-12-20_09-45-rice.png)
 
 ---
 # manual installation of a minimal system
