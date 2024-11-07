@@ -6,16 +6,17 @@ This script's purpose is to duplicate the Debian GNU/Linux system being used by 
 
 You probably would like to modify the script and some config files' pathname at first.
 
-Configs and scripts are outdated and won't be updated, you can find my newest setup at:
+Configs and scripts are outdated and won't be updated, you can find my newest setup at:  
 [codeberg](https://codeberg.org/unixchad/dotfiles)  
 [github](https://github.com/gnuunixchad/dotfiles)  
 
 This script was last tested on *Debian 12 x86_64*.
 
-The default wallpaper is created by me and Licensed as Creative Commons.
+The default wallpaper is created by me and Licensed under Creative Commons.
+
+Steps below are records for personal usage only, it's **NOT A GUIDE** by any means.
 
 ---
-Steps below are records for personal usage only, it's **NOT A GUIDE** by any means.
 # manual installation of a minimal system
 ## live iso rescure mode
     live mode doesn't have cryptsetup
