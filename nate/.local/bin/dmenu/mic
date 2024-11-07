@@ -1,0 +1,7 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+# display the current microphone capture volume
+
+#amixer -D pulse sget Capture | awk 'NR==5 {print $5 }' | tr -d '[]' | xargs -I {} notify-send -r 5560 Microphone\ Volume:\ {}
+amixer -D pulse sget Capture | awk -F "[][]" '/Front Left: Capture/ {print $2, "["$4"]" }' | xargs -I {} notify-send -u low -r 5560 Microphone\ Volume:\ {}

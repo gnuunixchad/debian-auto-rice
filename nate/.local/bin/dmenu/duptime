@@ -1,0 +1,6 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+# dunst uptime 
+
+notify-send -u low -r 3 "$(uptime -p)"

@@ -1,0 +1,5 @@
+include whitelist-common.local
+include blacklist-gpg.local
+
+whitelist /media/dsk0/vm/vbox
+whitelist /media/dsk1/vm/vbox

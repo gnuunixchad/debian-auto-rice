@@ -1,0 +1,62 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# open text file with neovim with dmenu 
+
+search_path=("$HOME/.config/btop/btop.conf" 
+             "$HOME/.config/epr/"
+             "$HOME/.config/cava/config"
+             "$HOME/.config/cls/"
+             "$HOME/.config/cmus/hyper.theme"
+             "$HOME/.config/dunst/dunstrc"
+             "$HOME/.config/firejail/"
+             "$HOME/.config/flameshot"
+             "$HOME/.config/foot/foot.ini"
+             "$HOME/.config/geary/user-style.css"
+             "$HOME/.config/git/"
+             "$HOME/.config/i3/"
+             "$HOME/.config/i3status/"
+             "$HOME/.config/mpv/*.conf"
+             "$HOME/.config/neofetch/config.conf"
+             "$HOME/.config/newsboat/"
+             "$HOME/.config/nsxiv/"
+             "$HOME/.config/nvim"
+             "$HOME/.config/parcellite"
+             "$HOME/.config/ranger/"
+             "$HOME/.config/sway/"
+             "$HOME/.config/task/taskrc"
+             "$HOME/.config/VSCodium/User/keybindings.json"
+             "$HOME/.config/VSCodium/User/settings.json"
+             "$HOME/.config/wget/wgetrc"
+             "$HOME/.config/pfetch"
+             "$HOME/.config/picom.conf"
+             "$HOME/.config/user.js"
+             "$HOME/.config/zathura"
+
+             "$HOME/.ssh/config"
+             "$HOME/.bashrc"
+             "$HOME/.inputrc"
+             "$HOME/.profile"
+             "$HOME/.Xauthority"
+             "$HOME/.Xmodmap"
+             "$HOME/.Xresources"
+             "$HOME/.xsession"
+
+             "$HOME/.local/bin"
+             "$HOME/.local/sbin"
+
+             "$doc/contacts/"
+             "$doc/dict/"
+             "$doc/datafiles/bookmarks/bookmarks"
+             "$doc/lyrics/"
+             "$doc/reading/"
+             "$doc/records/"
+             "$doc/thoughts/"
+            )
+
+selected_file=$(find "${search_path[@]}" -type f | grep -ve "/sbin/auto-rice/nate" -ve "/.git/" | dmenu -i -l 10 -sb '#ce5d97' -sf '#000000' -nb '#191919' -nf '#eeeeee' -fn 'DejaVu Sans Mono:bold:pixelsize=19')
+
+# don't open vim if none file selected
+if [ -n "$selected_file" ]; then
+    xterm -e nvim "$selected_file"
+fi

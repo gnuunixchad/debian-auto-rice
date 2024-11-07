@@ -1,0 +1,8 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+
+notify-send -u low -r 438 "key-hander: C-x C-w setwall"
+
+nsxiv -t $( find /media/dsk0/back/data/pic/wallpapers -type f | grep -e .jpeg -e .jpg -e .png -e .gif | shuf )
+

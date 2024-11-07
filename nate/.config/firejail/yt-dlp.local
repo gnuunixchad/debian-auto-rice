@@ -1,0 +1,5 @@
+include whitelist-common.local
+include blacklist-gpg.local
+
+# allow yt-dlp to use firefox cookies for certain websites
+noblacklist ${HOME}/.mozilla

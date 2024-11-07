@@ -1,0 +1,19 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# open ebook file with mupdf with dmenu 
+
+search_path=(
+            $doc/books/
+            )
+
+            selected_file=$(find "${search_path[@]}" -type f | dmenu -i -l 10 -sb '#ce5d97' -sf '#000000' -nb '#191919' -nf '#eeeeee' -fn 'DejaVu Sans Mono:bold:pixelsize=19')
+
+            # don't open mupdf if none file selected
+            if [ -n "$selected_file" ]; then
+                if [[ $selected_file == *.epub ]]; then
+                mupdf -I -C cccccc -r 140 -S13 "$selected_file"
+                else
+                mupdf -I "$selected_file"
+                fi
+            fi

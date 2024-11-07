@@ -1,0 +1,22 @@
+#!/bin/sh
+# @author nate zhou
+# @since 2024
+# First press Ctrl-x to send the next key to external key-handler
+# The externel key-handler requires this executable file as ~/.config/nsxiv/exec/key-handler
+
+while read file
+do
+    case "$1" in
+        # set wallpaper for i3
+        "C-w")
+            $HOME/.local/bin/setwall "$file" ;;
+
+        # delete the image
+        "C-d")
+            rm -f "$file" ;;
+
+        # show metadata
+        #"C-m")
+            #xterm -hold -e exiftool "$file" ;;
+    esac
+done

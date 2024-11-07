@@ -1,0 +1,4 @@
+#!/bin/bash
+# toggle capslock key
+
+xdotool key Caps_Lock

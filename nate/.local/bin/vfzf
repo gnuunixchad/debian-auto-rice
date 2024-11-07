@@ -1,0 +1,3 @@
+#!/bin/bash
+
+vim $(fzf --preview 'cat {}' $1)

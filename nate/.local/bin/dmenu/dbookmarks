@@ -1,0 +1,23 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# dmenu bookmarks
+# read from bookmarks file, print the selection address stdout then copy to clipboard
+
+# `grep -vE "^#|^[[:space:]]*$"` filters any line starting with `#` or only contains spaces/tabs, before piping to dmenu.
+
+# `awk '{sub(/[^|]*\|/, ""); print}'` run the sub function sub(), using regex to replace any sequence of characters that does not contain pipe symbol followed by a pipe symbol to empty chracter, then print the modified string. This filters the bookmarks' comments before piping to tee and copy to clipboard.
+
+# `tee >(xsel -b)` print the input to standard output before piping to xsel, in case this script is running in a terminal
+
+bookmarks_sel=$(cat $doc/datafiles/bookmarks/bookmarks | grep -vE "^#|^[[:space:]]*$" | dmenu -i -l 10 -sb '#3399ff' -sf '#000000' -nb '#191919' -nf '#eeeeee' -fn 'DejaVu Sans Mono:bold:pixelsize=18' | awk '{sub(/[^|]*\|/, ""); print}')
+
+# type the selection to current focused window
+# increase delay to reduce characters missing
+xdotool type --delay 30 $bookmarks_sel
+
+# copy the selection to clipboard
+echo -n $bookmarks_sel | xsel -b
+
+
+

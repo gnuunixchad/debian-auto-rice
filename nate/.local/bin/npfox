@@ -1,0 +1,11 @@
+#!/bin/bash
+# firefox profile with proxy settings
+# my personal script for fast launching a firefox
+# with a profile named "nocls" in dmenu in private window
+# profile must have be created in firefox
+# `about:profile`
+#
+# @authoer nate zhou
+# @since 2023
+
+firefox -P nocls --private-window;

@@ -1,0 +1,10 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# select git repositories with dmenu and open it with ranger
+
+selected_dir=$(find $HOME $doc -not -path "$HOME/.local/share/nvim/*" -not -path "/media/dsk0/back/data/doc/git/*" -type d -name '.git' -exec dirname {} \; | dmenu -i -l 10 -sb '#ce5d97' -sf '#000000' -nb '#191919' -nf '#eeeeee' -fn 'DejaVu Sans Mono:bold:pixelsize=19')
+
+if [ -n "$selected_dir" ]; then
+    xterm -e ranger "$selected_dir"
+fi

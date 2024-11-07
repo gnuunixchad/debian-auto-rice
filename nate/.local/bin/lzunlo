@@ -1,0 +1,13 @@
+#!/bin/bash
+# lazyunlo 
+# lazyunlock and mount my specific LUKS usb devices
+# @authoer nate zhou
+# @since 2023
+
+echo "lazyunlock, make sure LUKS device is /dev/sda1"
+
+echo "udisksctl unlock -b /dev/sda1"
+udisksctl unlock -b /dev/sda1
+
+echo "udisksctl mount -b /dev/dm-5"
+udisksctl mount -b /dev/dm-5

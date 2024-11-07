@@ -1,0 +1,14 @@
+#!/bin/bash
+# set wallpaper for i3wm
+# @author nate zhou
+# @since 2023
+
+
+rm $HOME/.local/share/wallpaper;
+#ln -s $1 $HOME/.wallpaper;
+
+# in ranger, '@` and type 'setwall` or `:shell setwall %s` will set the current selection as the new wallpaper
+cp $1 $HOME/.local/share/wallpaper;
+
+# refresh feh from i3 automatically, same as $mod+shift+r
+i3-msg restart;

@@ -1,0 +1,30 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+if [ "$#" -ne 2 ]; then
+	echo "Error: must have exactly 2 arguments"
+	echo "Usage: drysync dir1 dir2"
+	echo "rsync --dry-run -avh --delete --progress dir1 dir2"
+	exit 1
+fi
+
+echo "rsync --dry-run -avh --delete --progress $1/ $2"
+
+# $1/
+# would sync the files inside dir1
+# without "/", the dir2 would be dir2/dir1/files
+
+# $2
+# DO NOT add "/" after $2
+# otherwise if $2 is empty, deestination would be /, the root
+rsync --dry-run -avh --delete --progress $1/ $2 
+
+read -p "Do you want to continue without \"--dry-run\" ? (y/n): " choice
+
+if [[ $choice == "y" || $choice == "Y" ]]; then
+	echo "Continuing ..."
+	rsync -avh --delete --progress $1/ $2
+else
+	echo "rsync is aborted."
+	exit 0
+fi

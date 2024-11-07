@@ -1,0 +1,17 @@
+#!/bin/bash
+# lazylock
+# lazy lock my specific LUKS usb device
+# @authoer nate zhou
+# @since 2023
+
+
+echo "lazylock, make sure LUKS device is /dev/sda1, and unmounted";
+
+echo "udisksctl unmount -b /dev/dm-5"
+udisksctl unmount -b /dev/dm-5
+
+echo "udisksctl lock -b /dev/sda1"
+udisksctl lock -b /dev/sda1
+
+echo "udisksctl power-off -b /dev/sda"
+udisksctl power-off -b /dev/sda

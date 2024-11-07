@@ -1,0 +1,8 @@
+whitelist /media/dsk0/back/data/vid
+read-only /media/dsk0/back/data/vid
+whitelist /media/dsk0/movies
+read-only /media/dsk0/movies
+whitelist /media/dsk0/live
+read-only /media/dsk0/live
+whitelist /media/nate/
+read-only /media/nate/

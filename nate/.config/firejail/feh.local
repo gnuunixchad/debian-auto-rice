@@ -1,0 +1,7 @@
+include whitelist-common.local
+include whitelist-player-pic.local
+include blacklist-gpg.local
+
+blacklist /media/dsk0/back/data/pic/camera
+
+net none

@@ -1,0 +1,13 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# sync essential files for debiani auto-rice script
+
+data_path=/media/dsk0/back/data/doc/datafiles/home/nate
+note_path=/media/dsk0/back/data/doc/note/dotfiles/home/nate
+
+rsync -avh --delete $note_path $HOME/.local/sbin/auto-rice/
+rsync -avh --delete $data_path/.local/share $HOME/.local/sbin/auto-rice/nate/.local/
+
+# `--exclude .git` do not delete .git in the destination
+rsync -a --delete $HOME/.local/sbin/auto-rice --exclude .git/ /media/dsk0/back/data/doc/git/

@@ -1,0 +1,17 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+
+# dotfiles
+rsync -avh --delete --relative --exclude .git/ "$HOME/.local/bin" "$HOME/.bashrc" "$HOME/.inputrc" "$HOME/.profile" "$HOME/.xsession" "$HOME/.Xmodmap" "$HOME/.Xresources" "$HOME/.config/calcurse/conf" "$HOME/.config/cava" "$HOME/.config/cmus/hyper.theme" "$HOME/.config/dunst" "$HOME/.config/firejail" "$HOME/.config/flameshot/flameshot.ini" "$HOME/.config/foot" "$HOME/.config/geary/user-style.css" "$HOME/.config/gtk-2.0/gtkrc" "$HOME/.config/gtk-3.0" "$HOME/.config/i3" "$HOME/.config/i3status" "$HOME/.config/mpv/input.conf" "$HOME/.config/mpv/mpv.conf" "$HOME/.config/newsboat/config" "$HOME/.config/nsxiv" "$HOME/.config/nvim" "$HOME/.config/parcellite/parcelliterc" "$HOME/.config/qt5ct/qt5ct.conf" "$HOME/.config/ranger/rc.conf" "$HOME/.config/ranger/rifle.conf" "$HOME/.config/ranger/scope.sh" "$HOME/.config/sway" "$HOME/.config/task/taskrc" "$HOME/.config/VSCodium/User/keybindings.json" "$HOME/.config/VSCodium/User/settings.json" "$HOME/.config/wget/wgetrc" "$HOME/.config/zathura" "$HOME/.config/pfetch" "$HOME/.config/picom.conf" "$HOME/.config/dconf-settings" "$HOME/.config/user.js" "/media/dsk0/back/data/doc/note/dotfiles/"
+
+# autorices
+rsync -avh $HOME/.local/sbin/auto-rice/auto-rice.sh /media/dsk0/back/data/doc/note/debian/
+rsync -avh $HOME/.local/sbin/auto-rice/auto-rice.md /media/dsk0/back/data/doc/note/debian/
+
+# datafiles
+# frequently changing or sensitive datafiles that are not tracked by git
+calcurse --export=ical > $HOME/.config/calcurse/calendar.ical
+
+rsync -avh --delete --relative --exclude .git/ "$HOME/.ssh/config" "$HOME/.local/app" "$HOME/.local/sbin" "$HOME/.local/share/nvim/plugged" "$HOME/.local/share/nvim/site" "$HOME/.config/calcurse/calendar.ical" "$HOME/.config/btop/btop.conf" "$HOME/.config/cls" "$HOME/.config/cmus/playlists" "$HOME/.config/epr" "$HOME/.config/epr-zh" "$HOME/.config/git/config" "$HOME/.config/newsboat/urls" "$HOME/.config/supertuxkart/config-0.10/input.xml" "$HOME/.config/supertuxkart/config-0.10/highscore.xml" "$HOME/.config/supertuxkart/config-0.10/players.xml" "$HOME/.config/task/task/pending.data" "/media/dsk0/back/data/doc/datafiles/"
+

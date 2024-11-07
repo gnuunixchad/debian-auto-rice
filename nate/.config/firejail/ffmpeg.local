@@ -1,0 +1,10 @@
+include whitelist-common.local
+
+whitelist /media/dsk0/back/data/mus
+whitelist /media/dsk0/back/data/vid
+whitelist /media/dsk0/back/data/pic
+
+whitelist /media/dsk0/movies
+whitelist /media/dsk0/live
+
+net none
