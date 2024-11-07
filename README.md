@@ -1,4 +1,3 @@
-# Debian Auto-rice Script
 @author nate zhou  
 @since 2023, 2024  
 
@@ -15,6 +14,7 @@ This script was last tested on *Debian 12 x86_64*.
 The default wallpaper is created by me and Licensed under Creative Commons.
 
 Steps below are records for personal usage only, it's **NOT A GUIDE** by any means.
+[preview](./2023-12-20_09-45-rice.png)
 
 ---
 # manual installation of a minimal system
@@ -71,13 +71,13 @@ Steps below are records for personal usage only, it's **NOT A GUIDE** by any mea
 
 ---
 # 1. debian installer
-## dark installer and a default dark grub
+- dark installer and a default dark grub
     1. advanced install options..
     2. text installer with dark theme ...
-## skip network
-## don't leave root password empty, it disable's root login in recovery mode
-## username must be "nate" to use the auto-rise script
-## partition
+-  skip network
+- don't leave root password empty, it disable's root login in recovery mode
+- username must be "nate" to use the auto-rise script
+- partition
     - nvme0n1
       - nvme0n1p1 100MB fat32, /boot/efi (EFI)
       - nvme0n1p2 900MB ext2, /boot
