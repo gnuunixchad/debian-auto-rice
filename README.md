@@ -15,7 +15,9 @@ The default wallpaper is created by me and Licensed under Creative Commons.
 
 Steps below are records for personal usage only, it's **NOT A GUIDE** by any means.
 
-![preview](./2023-12-20_09-45-rice.png)
+
+![preview1](./2024-01-15_15-15.png)
+![preview2](./2023-12-20_09-45-rice.png)
 
 ---
 # manual installation of a minimal system
