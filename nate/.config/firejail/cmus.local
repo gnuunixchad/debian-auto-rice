@@ -1,0 +1,8 @@
+include whitelist-common.local
+include whitelist-player-mus.local
+include blacklist-gpg.local
+
+# stop non-music directory from appearing in cmus
+blacklist /media/dsk0/back/data/mus/misc
+
+net none

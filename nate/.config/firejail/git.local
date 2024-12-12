@@ -1,0 +1,6 @@
+include whitelist-common.local
+include blacklist-gpg.local
+
+whitelist /media/dsk0/data/back/doc/note
+whitelist /media/dsk0/data/back/doc/code
+whitelist /media/dsk0/data/back/doc/git

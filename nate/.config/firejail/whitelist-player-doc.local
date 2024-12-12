@@ -1,0 +1,5 @@
+whitelist /media/dsk0/back/data/doc
+read-only /media/dsk0/back/data/doc
+
+whitelist /media/dsk0/mnt
+read-only /media/dsk0/mnt

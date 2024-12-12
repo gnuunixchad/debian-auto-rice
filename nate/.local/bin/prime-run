@@ -1,0 +1,14 @@
+#!/bin/bash
+# forcing software to run with dedicated gpu on hybrid system
+# @author nate zhou
+## @since 2023, 2024
+# tested on Debian 12 | kernel 6.1.0-17-amd64 | nvidia-driver 525.147.05 | libdrm-amdgpu 2.4.114-1+b1
+
+# amdgpu
+export DRI_PRIME=1
+
+# nvidia-driver
+export __NV_PRIME_RENDER_OFFLOAD=1
+export __VK_LAYER_NV_optimus=NVIDIA_only
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+exec "$@"

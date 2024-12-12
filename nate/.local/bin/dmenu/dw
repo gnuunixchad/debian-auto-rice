@@ -1,0 +1,28 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+# dunst weather
+
+# use dunst show weather info
+# can run in dmenu
+
+if [[ -f $HOME/.cache/wttr ]]; then
+
+    wttr=$(cat $HOME/.cache/wttr)
+    
+    # check if the file is empty
+    if [[ -z $wttr ]]; then
+        msg="~/.cache/wttr is empty, try running updw ?"
+        notify-send -u low -r 20 "$msg"
+        echo $msg
+    else
+        msg=$wttr
+        notify-send -u low -r 20 "$msg"
+        echo $msg
+    fi
+    
+else
+    msg="~/.cache/wttr does not exist, try running updw ?"
+    notify-send -u low -r 20 "$msg"
+    echo $msg
+fi

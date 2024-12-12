@@ -1,0 +1,7 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# gallery-new
+# show gallery images with nsxiv, with lastest modified images first
+
+nsxiv -a -t $(ls -t $(find /media/dsk0/back/data/pic/ -type f ) | grep -v -e .nsfw/ -e .gpg/ -e kirei/ -e kirei-gif/ -e screenshots/ -e icons/ | grep -e .jpeg -e .jpg -e .png -e .gif)

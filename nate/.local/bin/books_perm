@@ -1,0 +1,17 @@
+#!/bin/bash
+# set_permission.bash
+# @author nate zhou
+# @since 2024-02-29
+# set permission for ebooks directory
+
+books_dir=/media/dsk0/back/data/doc/books
+current_dir=$(basename "$(pwd)")
+
+chmod 750 "$books_dir"/*
+
+# accessible to termuxnate, smanate
+# inaccessible to usbnate
+chown :public "$books_dir"/*
+
+# makes .pdf inaccessible to termuxnate's rsync on smaller android screens
+find "$books_dir" -type f -name "*.pdf" -exec chown :protected {} +

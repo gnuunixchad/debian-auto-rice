@@ -1,0 +1,22 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# enable touch pad tap to click
+# together with $bin/dmenu/distouch
+
+check_fx507=$(xinput | grep -E ".*ASUF.*Touchpad")
+check_y700=$(xinput | grep -E ".*AlpsPS/2.*GlidePoint")
+
+touch-notify() {
+    notify-send -u low -r 21 "enabled touchpad click"
+}
+
+if [[ -n $check_fx507 ]]; then
+    xinput set-prop "ASUF1204:00 2808:0104 Touchpad" "libinput Tapping Enabled" 1
+    touch-notify
+fi
+
+if [[ -n $check_y700 ]]; then
+    xinput set-prop "AlpsPS/2 ALPS GlidePoint" "libinput Tapping Enabled" 1
+    touch-notify
+fi

@@ -1,0 +1,12 @@
+include whitelist-common.local
+blacklist /media/dsk0/back/data/mus/.gpg
+blacklist /media/dsk0/back/data/pic/.gpg
+blacklist /media/dsk0/back/data/vid/.gpg
+
+whitelist /media/dsk0/back/data/doc/books
+read-only /media/dsk0/back/data/doc/books
+
+whitelist /media/dsk0/back/data/doc/.gpg
+read-only /media/dsk0/back/data/doc/.gpg
+
+net none

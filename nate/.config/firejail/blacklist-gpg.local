@@ -1,0 +1,4 @@
+blacklist /media/dsk0/back/data/doc/.gpg
+blacklist /media/dsk0/back/data/mus/.gpg
+blacklist /media/dsk0/back/data/pic/.gpg
+blacklist /media/dsk0/back/data/vid/.gpg

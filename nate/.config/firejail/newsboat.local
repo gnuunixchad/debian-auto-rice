@@ -1,0 +1,6 @@
+include whitelist-common.local
+include blacklist-gpg.local
+
+whitelist /media/dsk0/back/data/doc/articles
+
+private-bin less,w3m

@@ -1,0 +1,9 @@
+#!/bin/bash
+# xset rate script to quickly fix key stroke delay
+# @author nate zhou
+# @since 2023
+
+msg="xset r rate 200 30";
+xset r rate 200 30;
+echo $msg
+notify-send -u low -r 4 "$msg"

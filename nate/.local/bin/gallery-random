@@ -1,0 +1,7 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# gallery-random
+# randomly browse picture gallery with some filters
+
+nsxiv -a -t $(find /media/dsk0/back/data/pic -type f | grep -v -e .nsfw/ -e .gpg/ -e kirei/ -e kirei-gif/ -e memes/ -e icons/ -e screenshots | grep -e .jpeg -e .jpg -e .png -e .gif | shuf)

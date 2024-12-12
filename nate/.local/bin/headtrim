@@ -1,0 +1,14 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# headtrim
+# trim the audio/video file's first x seconds
+
+echo "Support Formats: Audio/Video"
+echo "Usage: headtrim FILE"
+echo "Then enter the first x seconds to be trim"
+
+ls "$1"
+
+read -p "Head to trim (in seconds): " headseconds
+ffmpeg -ss $headseconds -i "$1" -c copy "h_$1"

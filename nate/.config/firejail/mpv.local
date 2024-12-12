@@ -1,0 +1,10 @@
+# allow access to /media, must use with whitelist to ensure security
+ignore disable-mnt
+# whitelist pic mus vid
+include whitelist-common.local
+
+include whitelist-player-mus.local
+include whitelist-player-pic.local
+include whitelist-player-vid.local
+
+net none

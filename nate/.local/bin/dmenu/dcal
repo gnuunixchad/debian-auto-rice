@@ -1,0 +1,5 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+
+notify-send -u low -r 1 "$( cal | sed 's/^/      /' )"

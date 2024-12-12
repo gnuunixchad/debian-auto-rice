@@ -1,0 +1,14 @@
+# allow access to /media, must use with whitelist to ensure security
+ignore disable-mnt
+# whitelist httrack
+whitelist /media/dsk0/back/data/doc/httrack
+read-only /media/dsk0/back/data/doc/httrack
+
+whitelist /media/dsk0/temp
+include blacklist-gpg.local
+
+whitelist /media/dsk0/back/repo/extensions/firefox
+read-only /media/dsk0/back/repo/extensions/firefox
+
+whitelist /media/dsk0/back/data/doc/code/playground
+read-only /media/dsk0/back/data/doc/code/playground

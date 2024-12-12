@@ -1,0 +1,20 @@
+#!/bin/bash
+# lazygit
+# @author nate zhou
+# @since 2023
+
+echo "lazy git";
+git status;
+echo "git add .";
+echo "git commit -m update";
+
+read -p "Do you want to continue? (y/n): " choice
+
+if [[ $choice == "y" || $choice == "Y" ]]; then
+	echo "Continuing ..."
+	git add .;
+	git commit -m update;
+else
+	echo "lazygit is aborted."
+	exit 0
+fi

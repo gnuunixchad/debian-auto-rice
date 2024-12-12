@@ -1,0 +1,10 @@
+#!/bin/bash
+# lazy ssh to a frequently connected machine
+# @author nate zhou
+# @since 2023
+
+echo "lazy ssh"
+
+echo "ssh -p 2910 nate@192.168.31.15"
+
+ssh -p 2910 nate@192.168.31.15

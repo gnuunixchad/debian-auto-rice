@@ -1,0 +1,60 @@
+! @author nate zhou
+! @since 2023
+! xrdb -m ~/.Xresources
+
+Xft.dpi:120
+
+Xcursor.size: 1
+
+XTerm.vt100.translations: #override \n\
+  Ctrl Shift <Key>S: secure() \n\
+  Ctrl Shift <Key>O: smaller-vt-font() \n\
+  Ctrl Shift <Key>I: larger-vt-font() \n\
+  Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+  Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
+  Ctrl Shift <Key>K: scroll-back(1,halfpage) \n\
+  Ctrl Shift <Key>J: scroll-forw(1,halfpage)
+
+! Valid values for range from 0.9 to 1.5, with 1.0 being the default
+XTerm.vt100.scaleHeight: 0.97
+
+xterm*termName: xterm-256color
+xterm*saveLines: 4096
+xterm*faceName: DejaVu Sans Mono
+xterm*faceSize: 11
+xterm*Background: #191919
+xterm*Foreground: #bfbfbf
+
+! Black
+xterm*color0:   #100F0F 
+xterm*color8:   #666666
+! DarkRed + Red
+xterm*color1:   #cf3830
+xterm*color9:   #902c23
+! DarkGreen + Green
+xterm*color2:   #009933
+xterm*color10:  #8cff1a
+! DarkYellow + Yellow
+xterm*color3:   #cc7a00
+xterm*color11:  #ffff33
+! DarkBlue + Blue
+xterm*color4:   #a700b3
+xterm*color12:  #8533ff
+! DarkMagenta + Magenta
+xterm*color5:   #c70566
+xterm*color13:  #CE5D97
+! DarkCyan + Cyan
+xterm*color6:   #00cccc
+xterm*color14:  #41beb4
+! LightGrey + White
+xterm*color7:   #FFFCF0
+xterm*color15:  #dddddd
+
+! sxiv color 
+Sxiv.background: #191919
+Sxiv.foreground: #d0a215
+
+! nsxiv color
+Nsxiv*background: #191919
+Nsxiv*foreground: #eeeeee
+

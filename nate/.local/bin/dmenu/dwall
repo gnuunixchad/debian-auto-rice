@@ -1,0 +1,16 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# set wallpaper to i3wm via dmenu
+
+wallpaper_dir="/media/dsk0/back/data/pic/wallpapers"
+
+select_wall=$(find $wallpaper_dir -type f | sort | dmenu -i -l 10 -sb '#d0a215' -sf '#000000' -nb '#191919' -nf '#eeeeee' -fn 'DejaVu Sans Mono:bold:pixelsize=18')
+
+# check if selection is an image, by matching file extension
+if [[ $select_wall == *.jpeg || $select_wall == *.png || $select_wall == *.jpg || $select_wall == *.gif ]]; then
+    echo $select_wall
+    
+    $HOME/.local/bin/setwall $select_wall
+
+fi

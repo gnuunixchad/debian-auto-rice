@@ -1,0 +1,10 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# select and run some specific scritps with dmenu
+# most of them are either showing infomation in dunst
+# or do something quickly
+# add .local/bin/demnu/ to PATH in .profile
+
+
+command ls $bin/dmenu | dmenu -sb '#009933' -sf '#000000' -nb '#191919' -nf '#eeeeee' -fn 'DejaVu Sans Mono:bold:pixelsize=19' | bash

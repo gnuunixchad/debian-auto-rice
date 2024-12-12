@@ -1,0 +1,7 @@
+include whitelist-common.local
+include blacklist-gpg.local
+
+whitelist /media/dsk0/back/data/doc/code
+
+whitelist /media/dsk0/back/repo/extensions/codium
+read-only /media/dsk0/back/repo/extensions/codium

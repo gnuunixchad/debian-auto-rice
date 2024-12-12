@@ -1,0 +1,8 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+
+# Accept a string as city name
+city=$1
+
+curl v2.wttr.in/$city

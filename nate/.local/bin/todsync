@@ -1,0 +1,17 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+# todsync is the reverse od dotsync
+# if source path is changed, must manually cp the new excutable to .local/bin/
+
+# DON't add `--delete`
+# source path must have an ending `/`
+
+# dotfiles
+rsync -avh --progress /media/dsk0/back/data/doc/note/dotfiles/home/nate/ $HOME
+
+# datafiles
+rsync -avh --progress /media/dsk0/back/data/doc/datafiles/home/nate/ $HOME
+
+rm $HOME/.local/share/calcurse/apts
+calcurse -i $HOME/.config/calcurse/calendar.ical

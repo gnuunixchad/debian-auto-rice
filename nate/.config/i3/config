@@ -1,0 +1,407 @@
+# i3wm config for debian 12, i3 version 4.22
+# @auth nate zhou
+# @since 2023
+
+# mod4 super | mod 1 alt
+set $mod Mod4
+
+# automatically focus the window where cursor is at
+focus_follows_mouse no
+# stop cursor warping when switching focus to different output/monitor
+mouse_warping none
+# automatically move to the workspace where new action was taken on (e.g. open a httrack/email link tab in browser from another workspace)
+focus_on_window_activation focus
+
+# disable mouse resize on border with right lick
+bindsym --border button1 nop
+bindsym --border $mod+button1 nop
+# disable focus change for clicks on titlebars with middle mouse button
+bindsym button2 nop
+# disable mouse resize on border with left lick
+bindsym --border button3 nop
+bindsym --border $mod+button3 nop
+
+# Use $mod+mouse click 1/3 to drag/resize floating windows
+floating_modifier $mod
+
+# audio
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# window rules
+# supertuxkart never starts in floating
+for_window [class="supertuxkart"] floating disable
+#for_window [class="Geary"] move workspace $ws11
+for_window [title="floating_xterm"] floating enable
+for_window [title="floating_xterm"] resize set 50 ppt 60 ppt
+for_window [title="floating_xterm"] move position center
+
+# workspace
+# assign workspaces to specific monitors
+set $mon0 eDP-1
+set $mon1 HDMI-1-0
+workspace 1 output $mon0
+workspace 2 output $mon0
+workspace 3 output $mon0
+workspace 4 output $mon0
+workspace 5 output $mon0
+workspace 6 output $mon1
+workspace 7 output $mon1
+workspace 8 output $mon1
+workspace 9 output $mon1
+workspace 10 output $mon1
+workspace "?" output $mon1
+
+workspace_auto_back_and_forth yes
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+set $ws11 "?"
+set $ws12 "!"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+bindsym $mod+b workspace "?"
+bindsym $mod+Shift+apostrophe workspace "!"
+
+
+# cycle workspace on focused monitor
+bindsym $mod+less    workspace prev_on_output
+bindsym $mod+greater workspace next_on_output
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+b move container to workspace "?"
+# "fullscreen" without hiding status bar | mimic fullscreen mode in dwm | `workspace_auto_back_and_forth yes` must be set | define a new worksapce $wsf
+bindsym $mod+apostrophe move container to workspace "!" ; workspace "!"
+
+bindsym $mod+backslash workspace back_and_forth
+bindsym $mod+Shift+backslash move container to workspace back_and_forth
+
+# move workspace to output monitor
+bindsym $mod+CONTROL+y move workspace to output left
+bindsym $mod+CONTROL+u move workspace to output down
+bindsym $mod+CONTROL+i move workspace to output up
+bindsym $mod+CONTROL+o move workspace to output right
+
+bindsym $mod+y resize shrink width 60 px 
+bindsym $mod+u resize grow height 60 px 
+bindsym $mod+i resize shrink height 60 px
+bindsym $mod+o resize grow width 60 px
+
+# precise with shift
+bindsym $mod+Shift+y resize shrink width 10 px 
+bindsym $mod+Shift+u resize grow height 10 px 
+bindsym $mod+Shift+i resize shrink height 10 px
+bindsym $mod+Shift+o resize grow width 10 px
+
+# Function key mode
+bindsym $mod+semicolon  mode "Fn"
+mode "Fn" {
+    # --release is important, if not leaving non default mode, key stroks sent by xdotool
+    # doesn't do anything as the actual keys wouldn't do anyting in i3 modes
+    bindsym 1       --release exec --no-startup-id xdotool key F1 ; mode "default"
+    bindsym 2       --release exec --no-startup-id xdotool key F2 ; mode "default"
+    bindsym 3       --release exec --no-startup-id xdotool key F3 ; mode "default"
+    bindsym 4       --release exec --no-startup-id xdotool key F4 ; mode "default"
+    bindsym 5       --release exec --no-startup-id xdotool key F5 ; mode "default"
+    bindsym 6       --release exec --no-startup-id xdotool key F6 ; mode "default"
+    bindsym 7       --release exec --no-startup-id xdotool key F7 ; mode "default"
+    bindsym 8       --release exec --no-startup-id xdotool key F8 ; mode "default"
+    bindsym 9       --release exec --no-startup-id xdotool key F9 ; mode "default"
+    bindsym 0       --release exec --no-startup-id xdotool key F10; mode "default"
+    bindsym minus   --release exec --no-startup-id xdotool key F11; mode "default"
+    bindsym equal   --release exec --no-startup-id xdotool key F12; mode "default"
+
+    bindsym e       --release exec --no-startup-id xdotool key Escape   ; mode "default"
+    # single quote, cannot have semicolon for this, which would be buggy to enter the Fn mode
+    bindsym apostrophe       --release exec --no-startup-id xdotool key Escape   ; mode "default"
+
+    bindsym c       --release exec --no-startup-id xdotool key Caps_Lock; mode "default"
+
+    bindsym d       --release exec --no-startup-id xdotool key Delete   ; mode "default"
+    bindsym i       --release exec --no-startup-id xdotool key Insert   ; mode "default"
+
+    # mimic CapsLock mode_switch defined in custom ~/.Xmodmap, but without using left hand.
+    # key 66 = Caps_Lock, functioning like Mode_switch in ~/.Xmodmap
+    # `xdotool key Up/Down/Left/Right` are buggy, half of the time doesn't work
+    # `xdotool keyup/keydown 66` are buggy, key 66 is verly likely to stuck with down state and difficult to cancel
+    # without immediately exiting mode with `mode "default", xdotool doesn't work
+    bindsym h       --release exec --no-startup-id xdotool key 66+h     ; mode "default"
+    bindsym j       --release exec --no-startup-id xdotool key 66+j     ; mode "default"
+    bindsym k       --release exec --no-startup-id xdotool key 66+k     ; mode "default"
+    bindsym l       --release exec --no-startup-id xdotool key 66+l     ; mode "default"
+
+    bindsym Return          mode "default"
+    bindsym space           mode "default"
+    bindsym $mod+semicolon  mode "default"
+}
+
+########## appearance ##########
+
+# gaps size
+#gaps inner 2
+#gaps outer 0
+#smart_gaps on
+
+# Font for window titles
+font pango:monospace bold
+# title bar font size (0 to hide)
+font "pango: 0"
+
+# border size
+for_window [class="^.*"] border pixel 1
+# border color          border  backgr  text    indictr
+client.focused		    #00b386 #00b38a #eeeeee #8533ff
+client.focused_inactive #00b386 #222222 #eeeeee #222222
+client.unfocused        #888888 #222222 #eeeeee #222222
+
+bar {
+    status_command i3status
+	position top
+	font pango:DejaVu Sans Mono bold 9
+	#tray_output none|primary|<output>|HDMI-1-0
+	tray_output none
+	tray_padding 0
+	separator_symbol "/"
+    workspace_min_width 26 
+	# disable mouse
+	bindsym button1 nop
+	# 4/5/6/7 scroll up/down/right/left (touchpad)
+	bindsym button4 nop
+	bindsym button5 nop
+	bindsym button6 nop
+	bindsym button7 nop
+
+	i3bar_command i3bar ##--transparency
+	colors {
+	#background          #191919ee
+	background          #191919
+	separator           #777777
+    statusline          #eeeeee
+	
+	#workspace color    border  backgr  text
+	focused_workspace   #666666 #dda215 #000000
+	active_workspace    #666666 #777777 #000000
+	inactive_workspace  #555555 #222222 #AAAAAA
+	urgent_workspace    #666666 #3399ff #000000
+	binding_mode        #666666 #dda215 #000000
+	}
+}
+
+########## autostart ##########
+
+# `exec_always` ensures command is also run whenever i3 is restarted
+# `--no-startup-id` disables startup-notification, getting rid of the spinning cursor
+
+exec_always --no-startup-id "lxpolkit"
+
+exec_always --no-startup-id "xwallpaper --zoom $HOME/.local/share/wallpaper"
+
+exec_always --no-startup-id "xset r rate 300 30"
+
+exec --no-startup-id "xinput set-prop \"ASUF1204:00 2808:0104 Touchpad\" \"libinput Tapping Enabled\" 1"
+exec --no-startup-id "xinput set-prop \"AlpsPS/2 ALPS GlidePoint\" \"libinput Tapping Enabled\" 1"
+
+# `--vsync` fixs screen tearing, `sleep 2` to run after xrandr to fix glitches
+exec_always --no-startup-id "sleep 2 && picom --experimental-backends --vsync"
+
+# resolution (no  `_always`)
+#exec --no-startup-id "xrandr --output eDP-1 --mode 1920x1080"
+exec --no-startup-id "xrandr -s 1920x1080"
+#exec --no-startup-id "xrandr -s 1440x900"
+exec --no-startup-id "dock"
+
+# autolock, time in minutes
+exec --no-startup-id "xautolock -time 30 -locker \"i3lock -e -f --color 000000\""
+
+# lock the screen before suspend
+exec --no-startup-id "xss-lock --transfer-sleep-lock -- i3lock -e -f --color 000000 --nofork"
+
+# redshift (no `_always`)
+exec --no-startup-id "redshift -O 5000"
+
+exec --no-startup-id "parcellite"
+
+exec --no-startup-id "ibus-daemon --xim -d -r"
+
+exec --no-startup-id "xmodmap $HOME/.Xmodmap"
+
+########## keybindings ##########
+
+# change focus
+bindsym $mod+h                      focus left
+bindsym $mod+j                      focus down
+bindsym $mod+k                      focus up
+bindsym $mod+l                      focus right
+
+# move floating window
+bindsym $mod+Shift+h                move left 40 px
+bindsym $mod+Shift+j                move down 40 px
+bindsym $mod+Shift+k                move up 40 px
+bindsym $mod+Shift+l                move right 40 px
+
+# change split orientation
+bindsym $mod+v                      split v
+bindsym $mod+x                      split h
+
+# enter fullscreen
+bindsym $mod+f                      fullscreen toggle 
+
+# toggle status bar
+#bindsym $mod+Shift+f                bar mode toggle
+
+# toggle sticky for a floating window
+bindsym $mod+Shift+g                sticky toggle
+
+# change container layout
+bindsym $mod+s                      layout stacking
+bindsym $mod+t                      layout tabbed
+bindsym $mod+e                      layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+g                      floating toggle
+# change focus between tiling / floating windows
+bindsym $mod+Tab                    focus mode_toggle
+# focus the parent container
+bindsym $mod+p                      focus parent
+# focus the child container
+bindsym $mod+c                      focus child
+
+# scratchpad workspace
+# move a window to the scratchpad workspace, there's no way to open this workspace
+bindsym $mod+Shift+space            move scratchpad
+# windows in scratchpad workspace are invisible untill show again as floating windows
+# using `scratchpad show` on visible scratchpad window will bring it back to scratchpad workspace
+# to bring back from scratchpad workspace, toggle the floating mode on it
+bindsym $mod+space                  scratchpad show
+
+# reload the configuration file
+#bindsym $mod+Shift+c                reload
+# restart i3 inplace (can be used to upgrade i3)
+bindsym $mod+Shift+r                restart
+
+# close focused window
+bindsym --release $mod+q                      kill
+
+########## launching ##########
+
+bindsym $mod+Return                 exec --no-startup-id xterm
+bindsym $mod+Shift+Return           exec --no-startup-id xterm -T floating_xterm
+
+#bindsym $mod+r                      exec --no-startup-id xterm -e 'ranger $temp'
+bindsym $mod+r                      exec --no-startup-id xterm ranger
+
+bindsym $mod+Shift+c                exec --no-startup-id xterm calcurse
+
+bindsym $mod+d                      exec --no-startup-id "dmenu_run -sb '#8533ff' -sf '#000000' -nb '#191919' -nf '#eeeeee' -fn 'DejaVu Sans Mono:bold:pixelsize=19'"
+
+# personal dmenu run script
+bindsym $mod+w                      exec --no-startup-id "dmenu_w"
+
+# select files to edit in vim with dmenu 
+bindsym $mod+z                      exec --no-startup-id "dvim"
+
+# select ebook file to read in mupdf with dmenu
+bindsym $mod+Shift+z                exec --no-startup-id "dmupdf"
+
+# dmenu bookmarks script
+bindsym $mod+a                      exec --no-startup-id "dbookmarks"
+
+# brightness
+bindsym $mod+bracketleft            exec --no-startup-id brightnessctl set 2%- && bright
+bindsym $mod+bracketright           exec --no-startup-id brightnessctl set 2%+ && bright
+
+# volume
+bindsym $mod+minus                  exec --no-startup-id amixer -D pulse sset Master 2%- #&& $refresh_i3status 
+bindsym $mod+equal                  exec --no-startup-id amixer -D pulse sset Master 2%+ #&& $refresh_i3status 
+bindsym $mod+m                      exec --no-startup-id amixer -D pulse sset Master toggle #&& $refresh_i3status 
+
+# microphone
+# depends ~/bin/mic, send notification of current microphone volume and on/off state
+bindsym $mod+Shift+minus            exec --no-startup-id amixer -D pulse sset Capture 2%- && mic #&& $refresh_i3status 
+bindsym $mod+Shift+equal            exec --no-startup-id amixer -D pulse sset Capture 2%+  && mic #&& $refresh_i3status 
+bindsym $mod+Shift+m                exec --no-startup-id amixer -D pulse sset Capture toggle && mic #&& $refresh_i3status 
+
+# launch nsxiv to set wallpaper with key-handler
+bindsym $mod+Shift+w                exec --no-startup-id wallpaper-sel
+# set wallpaper vid dmenu
+bindsym $mod+CONTROL+w              exec --no-startup-id "dwall"
+
+bindsym $mod+n                      exec --no-startup-id "dunstctl history-pop"
+bindsym $mod+Shift+n                exec --no-startup-id "dunstctl close"
+bindsym $mod+BackSpace              exec --no-startup-id "dunstctl close-all"
+
+bindsym $mod+CONTROL+s              exec --no-startup-id flameshot full
+bindsym $mod+Shift+s                exec --no-startup-id flameshot gui
+
+# gaps
+bindsym $mod+CONTROL+minus          exec --no-startup-id "i3-msg gaps inner current minus 2"
+bindsym $mod+CONTROL+plus           exec --no-startup-id "i3-msg gaps inner current plus 2"
+
+bindsym --release $mod+Escape       exec --no-startup-id "i3lock -e -f --color 000000"
+
+# xdotool
+# mouse jump to corner
+bindsym $mod+slash                  exec --no-startup-id "xdotool mousemove 9999 9999"
+bindsym $mod+Shift+slash            exec --no-startup-id "xdotool mousemove 9999 0"
+bindsym $mod+grave                  exec --no-startup-id "xdotool mousemove 0 0"
+bindsym $mod+Shift+grave            exec --no-startup-id "xdotool mousemove 0 9999"
+# mousemove
+bindsym $mod+CONTROL+h              exec --no-startup-id "xdotool mousemove_relative -- -90 0"
+bindsym $mod+CONTROL+j              exec --no-startup-id "xdotool mousemove_relative -- 0 90"
+bindsym $mod+CONTROL+k              exec --no-startup-id "xdotool mousemove_relative -- 0 -90"
+bindsym $mod+CONTROL+l              exec --no-startup-id "xdotool mousemove_relative -- 90 0"
+# precise with Shift
+bindsym $mod+CONTROL+Shift+h        exec --no-startup-id "xdotool mousemove_relative -- -10 0"
+bindsym $mod+CONTROL+Shift+j        exec --no-startup-id "xdotool mousemove_relative -- 0 10"
+bindsym $mod+CONTROL+Shift+k        exec --no-startup-id "xdotool mousemove_relative -- 0 -10"
+bindsym $mod+CONTROL+Shift+l        exec --no-startup-id "xdotool mousemove_relative -- 10 0"
+# left click
+bindsym $mod+CONTROL+comma          exec --no-startup-id "xdotool click --clearmodifiers 1" 
+bindsym $mod+CONTROL+Shift+comma    exec --no-startup-id "xdotool click --clearmodifiers 1" 
+# right click
+bindsym $mod+CONTROL+period         exec --no-startup-id "xdotool click --clearmodifiers 3" 
+bindsym $mod+CONTROL+Shift+period   exec --no-startup-id "xdotool click --clearmodifiers 3" 
+# wheel
+bindsym $mod+CONTROL+p              exec --no-startup-id "xdotool click --clearmodifiers 4"
+bindsym $mod+CONTROL+Shift+p        exec --no-startup-id "xdotool click --clearmodifiers 4"
+bindsym $mod+CONTROL+n              exec --no-startup-id "xdotool click --clearmodifiers 5"
+bindsym $mod+CONTROL+Shift+n        exec --no-startup-id "xdotool click --clearmodifiers 5"
+# $mod+CapsLock toggle CapsLock | CapsLock defined as mode_swtich in ~/.Xmodmap
+bindcode  $mod+66                   exec --no-startup-id "xdotool key Caps_Lock"
+
+# cmus-remote
+#bindsym $mod+backslash              exec --no-startup-id "cmus-remote -u"
+#bindsym $mod+bracketleft            exec --no-startup-id "cmus-remote -r"
+#bindsym $mod+bracketright           exec --no-startup-id "cmus-remote -n"

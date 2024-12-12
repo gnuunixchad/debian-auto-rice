@@ -1,0 +1,8 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+
+# notify-send -r
+# the ID of the notification to replace
+# so that dunst doesn't stack new brightness change message
+brightnessctl | awk 'NR==2 {print $4 }' | tr -d '()' | xargs -I {} notify-send -r 5555 -u low Screen\ Brightness:\ {}

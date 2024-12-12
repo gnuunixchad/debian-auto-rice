@@ -1,0 +1,25 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# tailtrim
+# trim the last seconds of a audio/video file
+
+echo "Support Formats: Audio/Video"
+echo "Usage: tailtrim FILE"
+echo "Then enter the last x seconds to be trim"
+
+# get audio duration in miliseconds instead of mediainfo's default in minutes
+# put $1 inside quotation marks so the special characters in the filename wouldn't be meaningful to bash
+ls "$1"
+duration=$(mediainfo --Inform="Audio;%Duration%" "$1")
+
+# bash arithmetic cannot handle floating numbers, and dot ('.') is an operator (source)
+# round the zeros 1234.000000 -> 1234
+duration=$(printf "%.0f" "$duration")
+echo $duration
+
+# enter the seconds to trim
+read -p "Tail to trim (in seconds): " tailseconds
+
+# use bash arithmetic expansion to get second
+ffmpeg -to $(( $duration / 1000 - $tailseconds)) -i "$1" -c copy "n_$1"

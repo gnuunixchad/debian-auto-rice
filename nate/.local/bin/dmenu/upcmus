@@ -1,0 +1,9 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+# update cmus library
+
+# -C treat arguments as raw, instead of stdin, otherwise it is treated as a file
+cmus-remote -C clear
+cmus-remote -C "add /media/dsk0/back/data/mus"
+cmus-remote -C "update-cache -f"
